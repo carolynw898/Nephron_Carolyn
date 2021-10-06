@@ -18,3 +18,6 @@ Computation Time for sup CNT: 1868.715223
 Computation Time for CCD: 407.673415 
 Computation Time for OMCD: 546.594239 
 Computation Time for IMCD: 424.611952 
+Computation Time for CCD: 412.484967 
+Computation Time for CCD: 1268.560205 
+Computation Time for sup DCT: 94.720266 
