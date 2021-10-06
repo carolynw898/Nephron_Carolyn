@@ -301,7 +301,7 @@ def newton_rat(func,x,k,cell):
         x-= delta
         f = np.matrix(fun(x,k))
         iter+=1
-        #print(iter, np.linalg.norm(f))
+        print(iter, np.linalg.norm(f))
         TOLpcn = np.max(delta/x)
     return x
     
@@ -588,7 +588,7 @@ def newton_human(func,x,k,cell):
         x -= delta
         f = np.matrix(fun(x,k))
         iter += 1
-        #print(iter, np.linalg.norm(f))
+        print(iter, np.linalg.norm(f))
         TOLpcn = np.max(delta / x)
     return x
         

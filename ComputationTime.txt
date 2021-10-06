@@ -21,3 +21,7 @@ Computation Time for IMCD: 424.611952
 Computation Time for CCD: 412.484967 
 Computation Time for CCD: 1268.560205 
 Computation Time for sup DCT: 94.720266 
+Computation Time for sup DCT: 95.208993 
+Computation Time for sup DCT: 47.984039 
+Computation Time for sup DCT: 87.695252 
+Computation Time for sup DCT: 91.152668 
