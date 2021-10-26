@@ -138,9 +138,9 @@ def newton_rat(func,x,k,cell):
         elif cell.segment == 'mTAL':
             if np.linalg.norm(f)>5000:
                 if k==0:
-                    amp = 0.2
+                    amp = 0.2 ### CHANGED FROM 0.2
                 else:
-                    amp = 0.5
+                    amp = 0.5 ### CHANGED FROM 0.5
             elif np.linalg.norm(f)>1500:
                 if k==0:
                     amp = 0.2
@@ -228,7 +228,7 @@ def newton_rat(func,x,k,cell):
                 if k==0:
                     amp = 0.25
                 else:
-                    amp = 0.3 #0.5
+                    amp = 0.5 # 0.3 #0.5
             elif np.linalg.norm(f)>1000:
                 if k==0:
                     amp = 0.5
@@ -247,9 +247,9 @@ def newton_rat(func,x,k,cell):
                 elif np.linalg.norm(f)>5:
                     amp = 0.9
                 else:
-                    amp = 0.99 ################ CHANGED FROM amp = 1.0
+                    amp = 0.9 ################ CHANGED FROM amp = 1.0
             else:
-                amp = 1.0
+                amp = 0.9
         # OMCD
         elif cell.segment == 'OMCD':
             if np.linalg.norm(f)>5000:
@@ -588,7 +588,7 @@ def newton_human(func,x,k,cell):
         x -= delta
         f = np.matrix(fun(x,k))
         iter += 1
-        print(iter, np.linalg.norm(f))
+        # print(iter, np.linalg.norm(f))
         TOLpcn = np.max(delta / x)
     return x
         

@@ -136,7 +136,8 @@ def boundaryBath(cell,i):
         elif cell.segment=='MD':
             TotAmmCT = 1.0
             TotAmmCM = 1.5
-            pos = 1/200
+            pos = 1 / cell.total
+            # pos = 1/200
         elif cell.segment=='DCT':
             TotAmmCT = 0.1
             if cell.type !='sup':

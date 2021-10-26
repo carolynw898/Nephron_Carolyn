@@ -17,6 +17,7 @@ import AE1
 import NHE1
 import flux
 import output
+import re
 
 def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,file_to_save):
     solute = ['Na','K','Cl','HCO3','H2CO3','CO2','HPO4','H2PO4','urea','NH3','NH4','H','HCO2','H2CO2','glu']
@@ -26,15 +27,15 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # Proximal convolute tubule
     #========================================================
     print('%s PCT start' %(sup_or_jux))
-    if species == 'human':
-        NPT = 181
-    elif species == 'rat':
-        NPT = 176
-    elif species == 'mouse':
-        NPT = 176
-    else:
-        print(str(species))
-        raise Exception('what is species?')
+    # if species == 'human':
+    #     NPT = 181
+    # elif species == 'rat':
+    #     NPT = 176
+    # elif species == 'mouse':
+    #     NPT = 176
+    # else:
+    #     print(str(species))
+    #     raise Exception('what is species?')
 
     if sex == 'Male':
         filename = './datafiles/PTparams_M_'+species[0:3]+'.dat'
@@ -42,6 +43,22 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
         filename = './datafiles/PTparams_F_'+species[0:3]+'.dat'
     else:
         filename ='./datafiles/PTparams_F_'+species[0:3]+'.dat'
+
+    file = open(filename, 'r')
+    line = file.readline()
+    while (line):
+        line = line.replace('\t', ' ')
+        terms = line.split(' ')
+        if ((line[0][0] != '#') and ('total' == terms[0])):
+            first_space_pos = line.index(' ')
+            num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+            NPT = float(num[0])
+            break
+        else:
+            line = file.readline()
+    file.close()
+    NPT = NPT * 0.88
+    NPT = int(NPT)
 
     pt=compute(NPT,filename,'Broyden',sup_or_jux,diabete,species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx, preg = preg)
 
@@ -88,15 +105,15 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # S3
     #========================================================
     print('%s S3 start' %(sup_or_jux))
-    if species == 'human':
-        NS3 = 20
-    elif species == 'rat':
-        NS3 = 25
-    elif species == 'mouse':
-        NS3 = 25
-    else:
-        print('cell.species: ' + str(species))
-        raise Exception('what is species?')
+    # if species == 'human':
+    #     NS3 = 20
+    # elif species == 'rat':
+    #     NS3 = 25
+    # elif species == 'mouse':
+    #     NS3 = 25
+    # else:
+    #     print('cell.species: ' + str(species))
+    #     raise Exception('what is species?')
     
     if sex == 'Male':
         filename = './datafiles/S3params_M_'+species[0:3]+'.dat'
@@ -104,6 +121,24 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
         filename = './datafiles/S3params_F_'+species[0:3]+'.dat'
     else:
         filename ='./datafiles/S3params_F_'+species[0:3]+'.dat'
+
+    file = open(filename, 'r')
+    line = file.readline()
+    while (line):
+        line = line.replace('\t', ' ')
+        terms = line.split(' ')
+        if ((line[0][0] != '#') and ('total' == terms[0])):
+            first_space_pos = line.index(' ')
+            num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+            NS3 = float(num[0])
+            break
+        else:
+            line = file.readline()
+    file.close()
+    NS3 = NS3/8
+    NS3 = round(NS3)
+    NS3 = int(NS3)
+
     s3=compute(NS3,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx,preg = preg)
 
     Scaletorq = np.zeros(NS3)
@@ -151,7 +186,7 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # Short descending limb
     #========================================================
     print('%s SDL start' %(sup_or_jux))
-    NSDL = 200
+    # NSDL = 200
     if species == 'human':
         method = 'Newton'
     elif species == 'rat':
@@ -169,6 +204,22 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     else:
         filename ='./datafiles/SDLparams_F_'+species[0:3]+'.dat'
     #sdl=compute(NSDL,filename,'Broyden',diabete)
+
+    file = open(filename, 'r')
+    line = file.readline()
+    while (line):
+        line = line.replace('\t', ' ')
+        terms = line.split(' ')
+        if ((line[0][0] != '#') and ('total' == terms[0])):
+            first_space_pos = line.index(' ')
+            num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+            NSDL = float(num[0])
+            break
+        else:
+            line = file.readline()
+    file.close()
+    NSDL = int(NSDL)
+
     sdl=compute(NSDL,filename,method,sup_or_jux,diabete,species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx, preg = preg)
     
     Scaletorq = np.ones(NSDL)
@@ -182,13 +233,29 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     #========================================================
     if sup_or_jux != 'sup':
         print('%s LDL start' %(sup_or_jux))
-        NLDL = 200
+        # NLDL = 200
         if sex == 'Male':
             filename = './datafiles/LDLparams_M_'+species[0:3]+'.dat'
         elif sex == 'Female':
             filename = './datafiles/LDLparams_F_'+species[0:3]+'.dat'
         else:
             filename ='./datafiles/LDLparams_F_'+species[0:3]+'.dat'
+
+        file = open(filename, 'r')
+        line = file.readline()
+        while (line):
+            line = line.replace('\t', ' ')
+            terms = line.split(' ')
+            if ((line[0][0] != '#') and ('total' == terms[0])):
+                first_space_pos = line.index(' ')
+                num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+                NLDL = float(num[0])
+                break
+            else:
+                line = file.readline()
+        file.close()
+        NLDL = int(NLDL)
+
         ldl=compute(NLDL,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx, preg = preg)
 
         Scaletorq = np.ones(NLDL)
@@ -201,13 +268,29 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # Long ascending limb
     #========================================================
         print('%s LAL start' %(sup_or_jux))
-        NLAL = 200
+        # NLAL = 200
         if sex == 'Male':
             filename = './datafiles/LALparams_M_rat.dat'
         elif sex == 'Female':
             filename = './datafiles/LALparams_F_rat.dat'
         else:
             filename ='./datafiles/LALparams_F_rat.dat'
+
+        file = open(filename, 'r')
+        line = file.readline()
+        while (line):
+            line = line.replace('\t', ' ')
+            terms = line.split(' ')
+            if ((line[0][0] != '#') and ('total' == terms[0])):
+                first_space_pos = line.index(' ')
+                num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+                NLAL = float(num[0])
+                break
+            else:
+                line = file.readline()
+        file.close()
+        NLAL = int(NLAL)
+
         lal=compute(NLAL,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx, preg = preg)
 
         Scaletorq = np.ones(NLAL)
@@ -220,13 +303,29 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # Medulla thick ascending limb
     #========================================================
     print('%s mTAL start' %(sup_or_jux))
-    NmTAL = 200
+    # NmTAL = 200
     if sex == 'Male':
         filename = './datafiles/mTALparams_M_'+species[0:3]+'.dat'
     elif sex == 'Female':
         filename = './datafiles/mTALparams_F_'+species[0:3]+'.dat'
     else:
         filename ='./datafiles/mTALparams_F_'+species[0:3]+'.dat'
+
+    file = open(filename, 'r')
+    line = file.readline()
+    while (line):
+        line = line.replace('\t', ' ')
+        terms = line.split(' ')
+        if ((line[0][0] != '#') and ('total' == terms[0])):
+            first_space_pos = line.index(' ')
+            num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+            NmTAL = float(num[0])
+            break
+        else:
+            line = file.readline()
+    file.close()
+    NmTAL = int(NmTAL)
+
     mtal=compute(NmTAL,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi,inhib,unx = unx, preg = preg)
 
     Scaletorq = np.ones(NmTAL)
@@ -240,13 +339,29 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # Cortex thick ascending limb
     #========================================================
     print('%s cTAL start' %(sup_or_jux))
-    NcTAL = 200
+    # NcTAL = 200
     if sex == 'Male':
         filename = './datafiles/cTALparams_M_'+species[0:3]+'.dat'
     elif sex == 'Female':
         filename = './datafiles/cTALparams_F_'+species[0:3]+'.dat'
     else:
         filename ='./datafiles/cTALparams_F_'+species[0:3]+'.dat'
+
+    file = open(filename, 'r')
+    line = file.readline()
+    while (line):
+        line = line.replace('\t', ' ')
+        terms = line.split(' ')
+        if ((line[0][0] != '#') and ('total' == terms[0])):
+            first_space_pos = line.index(' ')
+            num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+            NcTAL = float(num[0])
+            break
+        else:
+            line = file.readline()
+    file.close()
+    NcTAL = int(NcTAL)
+
     ctal=compute(NcTAL,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi,inhib,unx = unx, preg = preg)
 
     Scaletorq = np.ones(NcTAL)
@@ -260,13 +375,29 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # Distal convoluted tubule
     #========================================================
     print('%s DCT start' %(sup_or_jux))
-    NDCT = 200
+    # NDCT = 200
     if sex == 'Male':
         filename = './datafiles/DCTparams_M_'+species[0:3]+'.dat'
     elif sex == 'Female':
         filename = './datafiles/DCTparams_F_'+species[0:3]+'.dat'
     else:
         filename ='./datafiles/DCTparams_F_'+species[0:3]+'.dat'
+
+    file = open(filename, 'r')
+    line = file.readline()
+    while (line):
+        line = line.replace('\t', ' ')
+        terms = line.split(' ')
+        if ((line[0][0] != '#') and ('total' == terms[0])):
+            first_space_pos = line.index(' ')
+            num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+            NDCT = float(num[0])
+            break
+        else:
+            line = file.readline()
+    file.close()
+    NDCT = int(NDCT)
+
     dct=compute(NDCT,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi,inhib,unx = unx, preg = preg)
 
     Scaletorq = np.ones(NDCT)
@@ -280,13 +411,30 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
     # Connecting tubule
     #========================================================
     print('%s CNT start' %(sup_or_jux))
-    NCNT = 200
+    # NCNT = 200
     if sex == 'Male':
         filename = './datafiles/CNTparams_M_'+species[0:3]+'.dat'
     elif sex == 'Female':
         filename = './datafiles/CNTparams_F_'+species[0:3]+'.dat'
     else:
         filename ='./datafiles/CNTparams_F_'+species[0:3]+'.dat'
+
+
+    file = open(filename, 'r')
+    line = file.readline()
+    while (line):
+        line = line.replace('\t', ' ')
+        terms = line.split(' ')
+        if ((line[0][0] != '#') and ('total' == terms[0])):
+            first_space_pos = line.index(' ')
+            num = re.findall(r'-?\d+\.?\d*[Ee]?[+-]?\d*', line[first_space_pos:len(line)])
+            NCNT = float(num[0])
+            break
+        else:
+            line = file.readline()
+    file.close()
+    NCNT = int(NCNT)
+
     cnt=compute(NCNT,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi,inhib,unx = unx, preg = preg)
 
     Scaletorq = np.ones(NCNT)

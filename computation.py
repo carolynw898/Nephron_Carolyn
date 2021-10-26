@@ -94,9 +94,9 @@ while (line):
 file.close()
 
 if segment == 'PT':
-    N = 7*N / 8
+    N = N * 0.88
 elif segment == 'S3':
-    N = N / 8
+    N = N - (N*0.88)
 
 N = int(N)
 method = 'Newton'

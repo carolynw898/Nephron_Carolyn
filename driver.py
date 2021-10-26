@@ -378,7 +378,7 @@ def compute(N,filename,method,sup_or_jux=None,diabete='Non',species = 'human',su
             raise Exception('cell.segment:' + cell[0].segment +' is not set up')
     
         # set up nonlinear system
-        equations.conservation_init (cell[i],cell[i+1],celln,dx)
+        equations.conservation_init (cell[i],cell[i+1],celln, dx)
         fvec = equations.conservation_eqs (x,i)
         
         # solving the system
@@ -542,7 +542,7 @@ def compute(N,filename,method,sup_or_jux=None,diabete='Non',species = 'human',su
         file.close()
     
 
-    number_of_cell = [i for i in range(1,200)]
+    # number_of_cell = [i for i in range(1,200)]
     solute = ['Na','K','Cl','HCO3','H2CO3','CO2','HPO4','H2PO4','urea','NH3','NH4','H','HCO2','H2CO2','glu']
     compart = ['Lumen','Cell','ICA','ICB','LIS','Bath']
 

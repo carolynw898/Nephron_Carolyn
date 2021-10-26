@@ -17,7 +17,7 @@ count=0
 def conservation_init (my_cell0, my_cell1,my_celln, my_dx):
 
     # global parameters
-    global dx
+    #global dx
     global cell0,cell1,cellm,celln
 
     cell0  = copy.deepcopy(my_cell0)
@@ -71,11 +71,11 @@ def conservation_eqs (x,i):
         
         if cell1.segment == 'IMCD':
             if cell1.species == 'rat':
-                coalesce = 0.2*(1-0.95*(i/N)**2)*np.exp(-2.75*i/N)
+                coalesce = 0.2*(1-0.95*(i/cell1.total)**2)*np.exp(-2.75*i/cell1.total)
             elif cell1.species == 'mou':
-                coalesce = 0.2*(1-0.95*(i/N)**2)*np.exp(-2.75*i/N)
+                coalesce = 0.2*(1-0.95*(i/cell1.total)**2)*np.exp(-2.75*i/cell1.total)
             elif cell1.species == 'hum':
-                coalesce = 0.1*(1-0.95*(i/N)**2)*np.exp(-2.75*i/N)
+                coalesce = 0.1*(1-0.95*(i/cell1.total)**2)*np.exp(-2.75*i/cell1.total)
             else:
                 print('cell1.species: ' + str(cell1.species))
                 raise Exception('what is species?')
