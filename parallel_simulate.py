@@ -112,7 +112,6 @@ if __name__ == '__main__':
             line = file.readline()
     file.close()
     NCCD = int(NCCD)
-    NCCD = 200
 
     ccd=compute(NCCD,filename,'Newton',diabete=diabete,species=species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx, preg=preg)
 
@@ -148,7 +147,6 @@ if __name__ == '__main__':
             line = file.readline()
     file.close()
     NOMCD = int(NOMCD)
-    NOMCD = 200
 
     if ccd[0].sex == 'male':
         omcd=compute(NOMCD,filename,'Newton',diabete=diabete,species=species,sup_or_multi=sup_or_multi,inhibition=inhib,unx=unx, preg=preg)
@@ -188,7 +186,6 @@ if __name__ == '__main__':
             line = file.readline()
     file.close()
     NIMCD = int(NIMCD)
-    NIMCD = 200
 
     imcd=compute(NIMCD,filename,'Newton',diabete=diabete,species=species,sup_or_multi=sup_or_multi,inhibition=inhib,unx=unx, preg=preg)
 

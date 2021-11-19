@@ -6,7 +6,7 @@ diameter_male	 0.00360    # luminal diameter for male 0.0037 in human paper and 
 diameter_female	 0.0036    # luminal diameter for female
 length_male		1.7   # tubule length for male
 length_female	1.7   # tubule length for female
-total 200           # total amount of PT cells
+total 50           # total amount of PT cells
 #
 #  luminal pressure
 #

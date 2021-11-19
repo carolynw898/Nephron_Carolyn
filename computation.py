@@ -94,9 +94,26 @@ while (line):
 file.close()
 
 if segment == 'PT':
-    N = N * 0.88
+	if species == 'rat':
+		N = N* 0.88
+	elif species == 'mouse':
+		N = N * 0.88
+	elif species == 'human':
+		N = N * 0.9
+	else:
+		print(str(species))
+		raise Exception('what is species?')
+
 elif segment == 'S3':
-    N = N - (N*0.88)
+	if species == 'rat':
+		N = N - (N*0.88)
+	elif species == 'mouse':
+		N = N - (N*0.88)
+	elif species == 'human':
+		N = N - (N*0.9)
+	else:
+		print(str(species))
+		raise Exception('what is species?')
 
 N = int(N)
 method = 'Newton'

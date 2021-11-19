@@ -57,7 +57,17 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
         else:
             line = file.readline()
     file.close()
-    NPT = NPT * 0.88
+
+    if species == 'rat':
+        NPT = NPT * 0.88
+    elif species == 'mouse':
+        NPT = NPT * 0.88
+    elif species == 'human':
+        NPT = NPT * 0.905
+    else:
+        print(str(species))
+        raise Exception('what is species?')
+
     NPT = int(NPT)
 
     pt=compute(NPT,filename,'Broyden',sup_or_jux,diabete,species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx, preg = preg)
@@ -135,8 +145,7 @@ def compute_segment(sup_or_jux,sex,species,sup_or_multi,diabete,inhib,unx,preg,f
         else:
             line = file.readline()
     file.close()
-    NS3 = NS3/8
-    NS3 = round(NS3)
+    NS3 = NS3 - NPT
     NS3 = int(NS3)
 
     s3=compute(NS3,filename,'Newton',sup_or_jux,diabete,species,sup_or_multi=sup_or_multi,inhibition = inhib,unx = unx,preg = preg)

@@ -200,9 +200,9 @@ def newton_rat(func,x,k,cell):
                         amp = 0.5
                 else:
                     if k==0:
-                        amp = 0.25
+                        amp = 0.25 # 0.25 N = 100
                     else:
-                        amp = 0.4
+                        amp = 0.4 # 0.4 N = 100
             elif np.linalg.norm(f)>1500:
                 if k==0:
                     amp = 0.4
@@ -247,7 +247,7 @@ def newton_rat(func,x,k,cell):
                 elif np.linalg.norm(f)>5:
                     amp = 0.9
                 else:
-                    amp = 0.9 ################ CHANGED FROM amp = 1.0
+                    amp = 0.9 # 1.0
             else:
                 amp = 0.5 # 0.75  # 0.9
         # OMCD
@@ -301,7 +301,7 @@ def newton_rat(func,x,k,cell):
         x-= delta
         f = np.matrix(fun(x,k))
         iter+=1
-        print(iter, np.linalg.norm(f))
+        # print(iter, np.linalg.norm(f))
         TOLpcn = np.max(delta/x)
     return x
     
@@ -394,9 +394,9 @@ def newton_human(func,x,k,cell):
                         amp = 0.7
                     elif cell.type == 'sup':
                         if np.linalg.norm(f)>2000:
-                            amp = 0.5
+                            amp = 0.3 # 0.5 # 0.1 for N = 100 # 0.3 for N = 50
                         else:
-                            amp = 0.5
+                            amp = 0.3 # 0.4 for N = 100 # 0.3 for N = 50
                     else:
                         amp = 1.0
                 else:
@@ -405,14 +405,14 @@ def newton_human(func,x,k,cell):
         elif cell.segment == 'CNT':
             if np.linalg.norm(f)>5000:
                 if k==0:
-                    amp = 0.2
+                    amp = 0.02 # 0.1 for N = 100 # 0.02 for N = 50
                 else:
-                    amp = 0.3
+                    amp = 0.3 # 0.3 for N = 100, 50
             elif np.linalg.norm(f)>1000:
                 if k==0:
-                    amp = 0.5
+                    amp = 0.05 # 0.5 # 0.25 for N = 100 # 0.05 for N = 50
                 else:
-                    amp = 0.7
+                    amp = 0.7 # 0.7 for N = 100, 500
             else:
                 amp = 1.0
         # CCD
@@ -421,23 +421,23 @@ def newton_human(func,x,k,cell):
                 if k==0:
                     amp = 0.25
                 else:
-                    amp = 0.5
+                    amp = 0.1 # 0.25 # 0.5 # 0.1 for N = 100, 50
             elif np.linalg.norm(f)>1000:
-                amp = 0.75
+                amp = 0.75 # 0.75 for N = 100, 50
             elif iter>50:
                 if np.linalg.norm(f)>1:
-                    amp = 0.8
+                    amp = 0.8 # 0.8 for N = 100, 50
                 else: 
-                    amp = 0.95
+                    amp = 0.95 # 0.95 for N = 100, 50
             else:
                 amp = 1.0
 
         # OMCD
         elif cell.segment == 'OMCD':
             if np.linalg.norm(f)>100:
-                amp = 0.5
+                amp = 0.25  # 0.5 for N = 100 # 0.25 for N = 50
             else:
-                amp = 0.8
+                amp = 0.8 # 0.8 for N = 100, 50
         # IMCD
         elif cell.segment == 'IMCD':
             if cell.inhib == 'ACE':
@@ -455,7 +455,7 @@ def newton_human(func,x,k,cell):
                 if cell.sex == 'female':
                     if np.linalg.norm(f)>100:
                         if k==0:
-                            amp = 0.2
+                            amp = 0.1 # 0.2 for N = 100 # 0.1 for N = 50
                         else:
                             amp = 0.1
                     else:
@@ -565,7 +565,7 @@ def newton_human(func,x,k,cell):
                                 amp = 0.1
                         else:
                             if k == 0:
-                                amp = 0.5
+                                amp = 0.075
                             else:
                                 amp = 0.5
                     elif cell.sex == 'male':
@@ -591,4 +591,4 @@ def newton_human(func,x,k,cell):
         # print(iter, np.linalg.norm(f))
         TOLpcn = np.max(delta / x)
     return x
-        
+
