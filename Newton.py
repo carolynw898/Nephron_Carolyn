@@ -394,9 +394,9 @@ def newton_human(func,x,k,cell):
                         amp = 0.7
                     elif cell.type == 'sup':
                         if np.linalg.norm(f)>2000:
-                            amp = 0.3 # 0.5 # 0.1 for N = 100 # 0.3 for N = 50
+                            amp = 0.05 # 0.5 # 0.1 for N = 100 # 0.3 for N = 50
                         else:
-                            amp = 0.3 # 0.4 for N = 100 # 0.3 for N = 50
+                            amp = 0.5 # 0.4 for N = 100 # 0.3 for N = 50
                     else:
                         amp = 1.0
                 else:
@@ -405,14 +405,14 @@ def newton_human(func,x,k,cell):
         elif cell.segment == 'CNT':
             if np.linalg.norm(f)>5000:
                 if k==0:
-                    amp = 0.02 # 0.1 for N = 100 # 0.02 for N = 50
+                    amp = 0.2 # 0.1 for N = 100 # 0.02 for N = 50
                 else:
                     amp = 0.3 # 0.3 for N = 100, 50
             elif np.linalg.norm(f)>1000:
                 if k==0:
-                    amp = 0.05 # 0.5 # 0.25 for N = 100 # 0.05 for N = 50
+                    amp = 0.5 # 0.5 # 0.25 for N = 100 # 0.05 for N = 50
                 else:
-                    amp = 0.7 # 0.7 for N = 100, 500
+                    amp = 0.7 # 0.7 for N = 100, 50
             else:
                 amp = 1.0
         # CCD
@@ -421,7 +421,7 @@ def newton_human(func,x,k,cell):
                 if k==0:
                     amp = 0.25
                 else:
-                    amp = 0.1 # 0.25 # 0.5 # 0.1 for N = 100, 50
+                    amp = 0.5 # 0.25 # 0.5 # 0.1 for N = 100, 50
             elif np.linalg.norm(f)>1000:
                 amp = 0.75 # 0.75 for N = 100, 50
             elif iter>50:
@@ -430,12 +430,12 @@ def newton_human(func,x,k,cell):
                 else: 
                     amp = 0.95 # 0.95 for N = 100, 50
             else:
-                amp = 1.0
+                amp = 1.1
 
         # OMCD
         elif cell.segment == 'OMCD':
             if np.linalg.norm(f)>100:
-                amp = 0.25  # 0.5 for N = 100 # 0.25 for N = 50
+                amp = 0.5  # 0.5 for N = 100 # 0.25 for N = 50a
             else:
                 amp = 0.8 # 0.8 for N = 100, 50
         # IMCD
@@ -455,7 +455,7 @@ def newton_human(func,x,k,cell):
                 if cell.sex == 'female':
                     if np.linalg.norm(f)>100:
                         if k==0:
-                            amp = 0.1 # 0.2 for N = 100 # 0.1 for N = 50
+                            amp = 0.2 # 0.2 for N = 100 # 0.1 for N = 50
                         else:
                             amp = 0.1
                     else:
@@ -565,7 +565,7 @@ def newton_human(func,x,k,cell):
                                 amp = 0.1
                         else:
                             if k == 0:
-                                amp = 0.075
+                                amp = 0.5
                             else:
                                 amp = 0.5
                     elif cell.sex == 'male':

@@ -519,3 +519,134 @@ Computation Time for sup CNT: 204.518377
 Computation Time for CCD: 127.940185 
 Computation Time for OMCD: 326.513500 
 Computation Time for IMCD: 255.545668 
+Computation Time for sup PT: 23.884919 
+Computation Time for sup S3: 10.404265 
+Computation Time for sup SDL: 114.069281 
+Computation Time for sup mTAL: 105.286447 
+Computation Time for sup cTAL: 150.496800 
+Computation Time for sup DCT: 411.742422 
+Computation Time for sup CNT: 1382.586213 
+Computation Time for CCD: 198.030741 
+Computation Time for OMCD: 2.862895 
+Computation Time for IMCD: 1.991166 
+Computation Time for sup PT: 23.772002 
+Computation Time for sup S3: 9.221792 
+Computation Time for sup SDL: 104.219691 
+Computation Time for sup mTAL: 105.439379 
+Computation Time for sup cTAL: 131.566396 
+Computation Time for sup DCT: 414.709645 
+Computation Time for sup CNT: 478.886727 
+Computation Time for CCD: 193.487820 
+Computation Time for OMCD: 2.883281 
+Computation Time for IMCD: 1.880634 
+Computation Time for sup PT: 23.415940 
+Computation Time for sup S3: 8.759173 
+Computation Time for sup SDL: 104.350729 
+Computation Time for sup mTAL: 100.306431 
+Computation Time for sup cTAL: 137.760438 
+Computation Time for sup DCT: 629.453539 
+Computation Time for sup CNT: 510.223501 
+Computation Time for CCD: 1525.721143 
+Computation Time for OMCD: 2.763725 
+Computation Time for IMCD: 1.813775 
+Computation Time for sup PT: 31.319805 
+Computation Time for sup S3: 11.745710 
+Computation Time for sup SDL: 130.554983 
+Computation Time for sup mTAL: 135.213169 
+Computation Time for sup cTAL: 182.635744 
+Computation Time for sup DCT: 586.602594 
+Computation Time for sup CNT: 586.844483 
+Computation Time for CCD: 242.145395 
+Computation Time for OMCD: 3.576955 
+Computation Time for IMCD: 2.434645 
+Computation Time for CCD: 244.239430 
+Computation Time for CCD: 244.519053 
+Computation Time for CCD: 243.495053 
+Computation Time for CCD: 4914.416327 
+Computation Time for CCD: 1046.288996 
+Computation Time for CCD: 446.951379 
+Computation Time for CCD: 335.288252 
+Computation Time for CCD: 1819.820549 
+Computation Time for sup PT: 41.322847 
+Computation Time for sup S3: 14.088693 
+Computation Time for sup SDL: 159.397609 
+Computation Time for sup mTAL: 134.117790 
+Computation Time for sup cTAL: 181.211246 
+Computation Time for sup DCT: 586.090894 
+Computation Time for sup PT: 33.411031 
+Computation Time for sup S3: 11.416953 
+Computation Time for sup SDL: 134.833482 
+Computation Time for sup mTAL: 130.379054 
+Computation Time for sup cTAL: 166.803408 
+Computation Time for sup DCT: 1514.086928 
+Computation Time for sup CNT: 587.898331 
+Computation Time for CCD: 2203.838083 
+Computation Time for OMCD: 8708.205059 
+Computation Time for IMCD: 362.748575 
+Computation Time for sup PT: 9.653181 
+Computation Time for sup S3: 3.002372 
+Computation Time for sup SDL: 30.011843 
+Computation Time for sup mTAL: 83.363002 
+Computation Time for sup cTAL: 78.112658 
+Computation Time for sup DCT: 154.425784 
+Computation Time for sup CNT: 104.461356 
+Computation Time for CCD: 188.162506 
+Computation Time for OMCD: 333.451988 
+Computation Time for IMCD: 150.016354 
+Computation Time for sup PT: 8.568886 
+Computation Time for sup S3: 2.781500 
+Computation Time for sup SDL: 34.742689 
+Computation Time for sup mTAL: 103.604827 
+Computation Time for sup cTAL: 34.254210 
+Computation Time for sup DCT: 5.481385 
+Computation Time for sup CNT: 1.093359 
+Computation Time for CCD: 1.250008 
+Computation Time for OMCD: 0.974152 
+Computation Time for IMCD: 0.634531 
+Computation Time for sup PT: 32.292888 
+Computation Time for sup S3: 10.211789 
+Computation Time for sup SDL: 138.189949 
+Computation Time for sup mTAL: 137.035374 
+Computation Time for sup cTAL: 147.237777 
+Computation Time for sup DCT: 711.465722 
+Computation Time for sup CNT: 459.071214 
+Computation Time for CCD: 4388.342550 
+Computation Time for OMCD: 1134.344399 
+Computation Time for IMCD: 4496.161730 
+Computation Time for sup PT: 24.960904 
+Computation Time for sup S3: 10.803602 
+Computation Time for sup SDL: 112.451064 
+Computation Time for sup mTAL: 307.448215 
+Computation Time for sup cTAL: 129.064715 
+Computation Time for sup DCT: 17.549660 
+Computation Time for sup CNT: 4.198422 
+Computation Time for CCD: 4.158799 
+Computation Time for OMCD: 3.161921 
+Computation Time for IMCD: 2.767206 
+Computation Time for sup DCT: 9.294457 
+Computation Time for sup DCT: 7.644330 
+Computation Time for sup DCT: 6.463174 
+Computation Time for sup DCT: 9.855570 
+Computation Time for sup DCT: 23.187324 
+Computation Time for sup DCT: 413.858826 
+Computation Time for sup DCT: 205.015626 
+Computation Time for sup PT: 9.285160 
+Computation Time for sup S3: 2.564040 
+Computation Time for sup SDL: 30.122129 
+Computation Time for sup mTAL: 88.105372 
+Computation Time for sup cTAL: 36.317218 
+Computation Time for sup DCT: 207.072825 
+Computation Time for sup CNT: 158.345351 
+Computation Time for CCD: 213.715411 
+Computation Time for OMCD: 276.382311 
+Computation Time for IMCD: 278.841814 
+Computation Time for sup PT: 6.699067 
+Computation Time for sup S3: 2.187142 
+Computation Time for sup SDL: 24.781933 
+Computation Time for sup mTAL: 69.411750 
+Computation Time for sup cTAL: 50.245977 
+Computation Time for sup DCT: 120.969474 
+Computation Time for sup CNT: 98.730441 
+Computation Time for CCD: 190.486299 
+Computation Time for OMCD: 290.835816 
+Computation Time for IMCD: 151.608292 
